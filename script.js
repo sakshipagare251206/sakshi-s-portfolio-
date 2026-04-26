@@ -141,35 +141,38 @@ window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
 
 // ========== CONTACT FORM HANDLING ==========
-const contactForm = document.getElementById('contactForm');
+
+
+    const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 
-contactForm?.addEventListener('submit', async (e) => {
+contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    
-    if (!name || !email || !message) {
-        showFormStatus('Please fill in all fields', 'error');
-        return;
-    }
-    
-    if (!isValidEmail(email)) {
-        showFormStatus('Please enter a valid email address', 'error');
-        return;
-    }
-    
-    // Simulate form submission
-    showFormStatus('Sending message...', 'loading');
-    
-    setTimeout(() => {
-        showFormStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
-        contactForm.reset();
-    }, 1500);
-});
 
+    const formData = new FormData(contactForm);
+
+    try {
+        const response = await fetch(contactForm.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            formStatus.innerHTML = "✅ Message sent successfully!";
+            formStatus.style.color = "#0ef";
+            contactForm.reset();
+        } else {
+            formStatus.innerHTML = "❌ Something went wrong.";
+            formStatus.style.color = "red";
+        }
+    } catch (error) {
+        formStatus.innerHTML = "❌ Network error.";
+        formStatus.style.color = "red";
+    }
+});
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
