@@ -951,7 +951,29 @@ section {
         z-index: 1000;
         gap: 30px;
     }
-    
+    .home {
+        padding-top: 120px;
+        padding-bottom: 80px;
+    }
+
+    .home-content {
+        margin-bottom: 30px;
+    }
+
+    .cta-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .social-icons {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .section-header {
+        margin-top: 40px;
+    }
+}
     .navbar.active {
         right: 0;
     }
