@@ -231,19 +231,26 @@
                     <p>linkedin.com/in/sakshi-pagare061225</p>
                 </div>
             </div>
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <input type="text" placeholder="Your Name" id="name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="Your Email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <textarea placeholder="Your Message" rows="5" id="message" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Send Message <i class="fas fa-paper-plane"></i></button>
-                <div id="formStatus"></div>
-            </form>
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/xdayvnnd" method="POST">
+    
+    <div class="form-group">
+        <input type="text" name="name" placeholder="Your Name" required>
+    </div>
+
+    <div class="form-group">
+        <input type="email" name="email" placeholder="Your Email" required>
+    </div>
+
+    <div class="form-group">
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+    </div>
+
+    <input type="hidden" name="_subject" value="New Portfolio Message!">
+
+    <button type="submit" class="btn btn-primary">Send Message</button>
+
+    <div id="formStatus"></div>
+</form>
         </div>
     </section>
 
